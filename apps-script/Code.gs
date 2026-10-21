@@ -56,3 +56,14 @@ function getSheet_() {
   }
   return sheet;
 }
+
+/**
+ * Jalankan sekali dari editor (pilih "buatSecret" lalu klik Jalankan).
+ * Membuat SECRET acak 64 karakter, menyimpannya di Properti skrip, dan menampilkannya di Log eksekusi.
+ * Salin nilainya ke Vercel sebagai GOOGLE_SHEETS_SECRET. Menjalankan ulang akan mengganti SECRET.
+ */
+function buatSecret() {
+  var s = Utilities.getUuid().replace(/-/g, "") + Utilities.getUuid().replace(/-/g, "");
+  PropertiesService.getScriptProperties().setProperty("SECRET", s);
+  Logger.log(s);
+}

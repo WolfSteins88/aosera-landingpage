@@ -2,7 +2,8 @@
 
 import { LOCALES, whatsappUrl, type Locale } from "@/lib/site";
 import { getDictionary } from "@/lib/dictionary";
-import { Moon, Sun, WhatsApp } from "./icons";
+import { useRef, useState } from "react";
+import { MessageCircle, Moon, Plus, Sun } from "./icons";
 
 function isDarkNow() {
   const set = document.documentElement.dataset.theme;
@@ -12,6 +13,19 @@ function isDarkNow() {
 
 export default function Nav({ locale }: { locale: Locale }) {
   const t = getDictionary(locale);
+  const [phase, setPhase] = useState<"idle" | "start" | "end">("idle");
+  const timer = useRef<number | undefined>(undefined);
+
+  // Mirrors aosera-website's "Hubungi kami" pill: avatars slide in with a plus, then merge and reveal the label.
+  const enter = () => {
+    window.clearTimeout(timer.current);
+    setPhase("start");
+    timer.current = window.setTimeout(() => setPhase("end"), 520);
+  };
+  const leave = () => {
+    window.clearTimeout(timer.current);
+    setPhase("idle");
+  };
   const toggleTheme = () => {
     const next = isDarkNow() ? "light" : "dark";
     const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -55,12 +69,37 @@ export default function Nav({ locale }: { locale: Locale }) {
             <Sun className="sun" size={18} />
             <Moon className="moon" size={18} />
           </button>
-          <a className="nav-cta" href={whatsappUrl(t.contact.waText)} target="_blank" rel="noopener noreferrer" aria-label={t.nav.cta}>
-            <span className="long">{t.nav.cta}</span>
-            <span className="short">{t.nav.ctaShort}</span>
-            <i aria-hidden="true">
-              <WhatsApp size={15} />
-            </i>
+          <a
+            className="git"
+            data-phase={phase}
+            href={whatsappUrl(t.contact.waText)}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={t.nav.ctaAria}
+            onPointerEnter={(e) => e.pointerType === "mouse" && enter()}
+            onPointerLeave={leave}
+            onFocus={enter}
+            onBlur={leave}
+          >
+            <span className="git-size" aria-hidden="true">
+              {t.nav.cta}
+            </span>
+            <span className="git-def" aria-hidden="true">
+              {t.nav.ctaShort}
+            </span>
+            <span className="git-act" aria-hidden="true">
+              <span className="git-cl">
+                <span className="git-av" />
+                <span className="git-plus">
+                  <Plus size={14} strokeWidth={2.4} />
+                </span>
+                <span className="git-you">{t.nav.you}</span>
+              </span>
+              <span className="git-hv">{t.nav.cta}</span>
+            </span>
+            <span className="git-ic" aria-hidden="true">
+              <MessageCircle size={18} strokeWidth={1.9} />
+            </span>
           </a>
         </div>
       </nav>

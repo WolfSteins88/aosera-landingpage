@@ -52,6 +52,12 @@ export const Send = (p: P) => (
   </Svg>
 );
 
+export const Plus = (p: P) => (
+  <Svg {...p}>
+    <path d="M5 12h14M12 5v14" />
+  </Svg>
+);
+
 export const Mail = (p: P) => (
   <Svg {...p}>
     <rect x="2.5" y="4.5" width="19" height="15" rx="2.5" />

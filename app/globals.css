@@ -565,41 +565,148 @@ button {
   :root:not([data-theme="light"]) .theme-btn .moon { display: block; }
 }
 
-.nav-cta {
+/* "Hubungi kami" pill, copied from aosera-website (.git) */
+.git {
+  --spring-soft: linear(0, .017, .063, .13, .211, .302, .397, .492, .584, .671, .751, .822, .885, .939, .983, 1.019, 1.047, 1.068, 1.082, 1.09, 1.094, 1.094, 1.091, 1.086, 1.079, 1.07, 1.062, 1.053, 1.044, 1.035, 1.027, 1.02, 1.014, 1.008, 1.004, 1, .997, .994, .993, .992, 1);
+  --contact-cluster-width: 60px;
+  --contact-text-gap: 10px;
+  --ease-standard: cubic-bezier(.2, 0, 0, 1);
+  isolation: isolate;
+  position: relative;
   display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 40px;
-  padding: 6px 6px 6px 16px;
+  flex: none;
+  width: max-content;
+  min-width: 164px;
+  height: 44px;
   border-radius: var(--radius-pill);
   background: var(--color-text);
   color: var(--color-canvas);
+  overflow: hidden;
+  transition: scale .2s var(--ease-out);
+}
+
+.git:active { scale: .98; }
+
+.git:focus-visible {
+  outline: 2px solid var(--color-text);
+  outline-offset: 2px;
+}
+
+.git-size {
+  visibility: hidden;
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: var(--weight-semibold);
+  padding-inline: calc(var(--space-1) + var(--contact-cluster-width) + var(--contact-text-gap)) var(--space-3);
+  align-self: center;
+}
+
+.git-def {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 14px;
   font-weight: var(--weight-semibold);
-  white-space: nowrap;
+  transition: transform .24s var(--ease-standard), opacity .24s var(--ease-standard), filter .24s var(--ease-standard);
 }
 
-.nav-cta i {
+.git-act {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  padding-left: 4px;
+  opacity: 0;
+  font-size: 13px;
+  font-weight: var(--weight-semibold);
+  transition: opacity .24s var(--ease-standard);
+}
+
+.git-cl {
+  display: flex;
+  flex: none;
+  align-items: center;
+  transform: translate(32px);
+  transition: transform .6s var(--spring-soft);
+}
+
+.git-av,
+.git-you {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  opacity: 0;
+  transition: transform .5s var(--spring-soft), opacity .3s, margin .4s var(--spring-soft);
+}
+
+.git-av {
+  background: conic-gradient(from 180deg, var(--prism-1), var(--prism-2), var(--prism-3), var(--prism-4), var(--prism-5), var(--prism-6), var(--prism-7), var(--prism-1));
+  transform: translate(-40px) rotate(-180deg);
+}
+
+.git-av::after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--white);
+  box-shadow: 0 0 0 3px #ffffff59;
+}
+
+.git-you {
+  position: relative;
+  z-index: 1;
+  background: var(--color-canvas);
+  color: var(--color-text);
+  font-size: 9.5px;
+  font-weight: var(--weight-semibold);
+  letter-spacing: .02em;
+  transform: translate(40px) rotate(180deg);
+}
+
+.git-plus {
   display: grid;
   place-items: center;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: var(--color-whatsapp);
-  color: #fff;
+  width: 0;
+  margin: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: scale(.6);
+  transition: width .35s var(--spring-soft), margin .35s var(--spring-soft), opacity .24s, transform .35s var(--spring-soft);
 }
 
-.nav-cta .long { display: none; }
+.git-hv {
+  position: absolute;
+  right: var(--space-3);
+  display: block;
+  margin-left: var(--contact-text-gap);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(var(--space-2));
+  transition: transform .24s var(--ease-standard), opacity .24s var(--ease-standard);
+}
 
-@media (max-width: 479px) {
-  .nav-cta .short { display: none; }
-  .nav-cta { padding-left: 6px; }
+.git:is([data-phase="start"], [data-phase="end"]) .git-def { opacity: 0; filter: blur(4px); transform: translateY(-28px); }
+.git:is([data-phase="start"], [data-phase="end"]) .git-act { opacity: 1; }
+.git:is([data-phase="start"], [data-phase="end"]) .git-av { opacity: 1; transition-delay: 40ms; transform: none; }
+.git:is([data-phase="start"], [data-phase="end"]) .git-you { opacity: 1; transition-delay: .1s; transform: none; }
+.git[data-phase="start"] .git-plus { opacity: 1; width: 18px; margin: 0 8px; transition-delay: .14s; transform: none; }
+.git[data-phase="end"] .git-cl { transform: none; }
+.git[data-phase="end"] .git-you { margin-left: -12px; transition-delay: 0s; }
+.git[data-phase="end"] .git-hv { opacity: 1; transition-delay: .2s; transform: none; }
+
+.git-ic { display: none; }
+
+@media (max-width: 639px) {
+  .git { width: 44px; min-width: 0; }
+  .git-size, .git-def, .git-act { display: none; }
+  .git-ic { display: grid; place-items: center; width: 100%; }
   .nav { padding-left: 14px; gap: var(--space-2); }
-}
-
-@media (min-width: 640px) {
-  .nav-cta .long { display: inline; }
-  .nav-cta .short { display: none; }
 }
 
 @media (min-width: 900px) {

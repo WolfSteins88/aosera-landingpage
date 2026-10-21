@@ -7,12 +7,13 @@ export function isLocale(value: string): value is Locale {
 
 export const WHATSAPP_NUMBER = "628551899911";
 export const WHATSAPP_DISPLAY = "0855 1899 911";
+export const WHATSAPP_NUMBER_2 = "6281916600666";
 export const WHATSAPP_DISPLAY_2 = "081 916 600 666";
 export const CONTACT_EMAIL = "aosera.ai@gmail.com";
 export const TELEGRAM_URL = "https://t.me/aoseratech";
 export const INSTAGRAM_URL = "https://www.instagram.com/aoseratech";
 export const MAIN_SITE_URL = "https://aosera-website.vercel.app";
 
-export function whatsappUrl(text: string) {
-  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+export function whatsappUrl(text: string, number: string = WHATSAPP_NUMBER) {
+  return `https://wa.me/${number}?text=${encodeURIComponent(text)}`;
 }

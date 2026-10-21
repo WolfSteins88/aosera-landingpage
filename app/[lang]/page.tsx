@@ -12,6 +12,7 @@ import {
   TELEGRAM_URL,
   WHATSAPP_DISPLAY,
   WHATSAPP_DISPLAY_2,
+  WHATSAPP_NUMBER_2,
   isLocale,
   whatsappUrl,
 } from "@/lib/site";
@@ -213,7 +214,11 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                       WhatsApp {WHATSAPP_DISPLAY}
                     </a>
                   </li>
-                  <li className="tabular-nums">{WHATSAPP_DISPLAY_2}</li>
+                  <li>
+                    <a href={whatsappUrl(t.contact.waText, WHATSAPP_NUMBER_2)} target="_blank" rel="noopener noreferrer">
+                      WhatsApp {WHATSAPP_DISPLAY_2}
+                    </a>
+                  </li>
                   <li>
                     <a href={TELEGRAM_URL} target="_blank" rel="noopener noreferrer">
                       Telegram @aoseratech

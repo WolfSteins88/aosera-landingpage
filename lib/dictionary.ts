@@ -107,7 +107,7 @@ const id = {
     waText: "Halo aosera, saya ingin berdiskusi tentang kebutuhan usaha saya.",
   },
   footer: {
-    blurb: "Tim dari Bali.",
+    blurb: "Tim dari Bali yang membangun aplikasi dan website untuk usaha.",
     mainSite: "Kunjungi aosera-website",
     contact: "Kontak",
     madeIn: "Dibuat di Bali.",
@@ -222,7 +222,7 @@ const en: Dictionary = {
     waText: "Hi aosera, I would like to discuss my business needs.",
   },
   footer: {
-    blurb: "A team from Bali.",
+    blurb: "A team from Bali building apps and websites for businesses.",
     mainSite: "Visit aosera-website",
     contact: "Contact",
     madeIn: "Made in Bali.",

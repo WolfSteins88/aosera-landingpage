@@ -81,7 +81,7 @@ export const STEPS: Question[][] = [
       options: [
         o("paper", "Buku / kertas", "Notebook / paper"),
         o("spreadsheet", "Excel / Google Sheets", "Excel / Google Sheets"),
-        o("other-app", "Aplikasi lain", "Another app"),
+        o("other-app", "Software atau sistem lain", "Other software or system"),
         o("none", "Belum ada cara khusus", "Nothing in particular yet"),
       ],
     },
@@ -102,8 +102,8 @@ export const STEPS: Question[][] = [
       min: 1,
       max: 5,
       label: {
-        id: "Jika ada aplikasi yang menyelesaikan masalah tersebut, seberapa membantu?",
-        en: "If an app solved this problem, how helpful would it be?",
+        id: "Jika ada produk digital yang menyelesaikan masalah tersebut, seberapa membantu?",
+        en: "If a digital product solved this problem, how helpful would it be?",
       },
     },
     {

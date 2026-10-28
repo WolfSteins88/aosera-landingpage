@@ -23,7 +23,7 @@ export const STEPS: Question[][] = [
       id: "businessType",
       kind: "single",
       required: true,
-      label: { id: "Apa jenis usaha Anda?", en: "What kind of business do you run?" },
+      label: { id: "Apa jenis bisnis Anda?", en: "What kind of business do you run?" },
       options: [
         o("cafe", "Kedai kopi", "Coffee shop"),
         o("restaurant", "Restoran / warung", "Restaurant / eatery"),
@@ -38,7 +38,7 @@ export const STEPS: Question[][] = [
       id: "teamSize",
       kind: "single",
       required: true,
-      label: { id: "Berapa orang yang bekerja di usaha Anda?", en: "How many people work in your business?" },
+      label: { id: "Berapa orang yang bekerja di bisnis Anda?", en: "How many people work in your business?" },
       options: [
         o("solo", "Saya sendiri", "Just me"),
         o("2-5", "2 sampai 5", "2 to 5"),
@@ -50,7 +50,7 @@ export const STEPS: Question[][] = [
       id: "location",
       kind: "text",
       maxLength: 80,
-      label: { id: "Di kota / kabupaten mana usaha Anda?", en: "Which city or regency is your business in?" },
+      label: { id: "Di kota / kabupaten mana bisnis Anda?", en: "Which city or regency is your business in?" },
       placeholder: { id: "Contoh: Denpasar", en: "e.g. Denpasar" },
     },
   ],
@@ -60,7 +60,7 @@ export const STEPS: Question[][] = [
       kind: "multi",
       required: true,
       max: 3,
-      label: { id: "Apa masalah terbesar usaha Anda saat ini?", en: "What are the biggest problems in your business right now?" },
+      label: { id: "Apa masalah terbesar bisnis Anda saat ini?", en: "What are the biggest problems in your business right now?" },
       options: [
         o("sales-stock", "Mencatat penjualan dan stok", "Tracking sales and stock"),
         o("bookkeeping", "Pembukuan dan laporan keuangan", "Bookkeeping and financial reports"),

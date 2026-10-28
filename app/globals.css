@@ -48,6 +48,12 @@
   --prism-6: #8d9bff;
   --prism-7: #c79bff;
 
+  --shadow-1: 0 1px 2px #1f24300f, 0 1px 1px #1f24300a;
+  --pill-prism-padding: 3px 9px;
+  --pill-prism-border-width: 1px;
+  --pill-prism-border: color-mix(in srgb, var(--color-text) 28%, var(--color-surface));
+  --pill-prism-bg: linear-gradient(115deg, color-mix(in srgb, var(--color-surface) 88%, var(--prism-5)), color-mix(in srgb, var(--color-surface) 88%, var(--prism-6)), color-mix(in srgb, var(--color-surface) 88%, var(--prism-7)), color-mix(in srgb, var(--color-surface) 88%, var(--prism-1)));
+
   --font-sans: "Plus Jakarta Sans Variable", "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --weight-regular: 400;
   --weight-medium: 500;
@@ -86,6 +92,7 @@
     color-scheme: dark;
     --color-canvas: #0d1016;
     --color-surface: #1a1e27;
+    --shadow-1: 0 1px 2px #0006;
     --color-surface-2: #232834;
     --color-border: #2e3441;
     --color-text: #ece8df;
@@ -117,6 +124,7 @@
   color-scheme: dark;
   --color-canvas: #0d1016;
   --color-surface: #1a1e27;
+  --shadow-1: 0 1px 2px #0006;
   --color-surface-2: #232834;
   --color-border: #2e3441;
   --color-text: #ece8df;
@@ -334,16 +342,22 @@ button {
   letter-spacing: .06em;
   text-transform: uppercase;
   color: var(--color-text-muted);
+  flex-wrap: wrap;
 }
 
+/* Prism-tinted outline pill, matching aosera-website's updated .tag */
 .tag {
   display: inline-flex;
+  flex: none;
   align-items: center;
   gap: 6px;
-  padding: 3px 9px;
+  padding: var(--pill-prism-padding);
+  border: var(--pill-prism-border-width) solid var(--pill-prism-border);
   border-radius: var(--radius-pill);
-  background: var(--color-accent);
-  color: var(--color-on-accent);
+  background: var(--pill-prism-bg);
+  box-shadow: var(--shadow-1);
+  color: var(--color-text);
+  white-space: nowrap;
   font-size: 11px;
   font-weight: var(--weight-semibold);
   letter-spacing: .06em;
@@ -1401,8 +1415,12 @@ textarea.input {
   gap: var(--space-6);
 }
 
-@media (min-width: 760px) {
-  .footer-grid { grid-template-columns: 1.4fr 1fr 1fr; }
+@media (min-width: 561px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (min-width: 861px) {
+  .footer-grid { grid-template-columns: 1.4fr repeat(3, 1fr); }
 }
 
 .footer p {

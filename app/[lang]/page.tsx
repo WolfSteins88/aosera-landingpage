@@ -191,21 +191,26 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                 </a>
                 <p>{t.footer.blurb}</p>
               </div>
-              <div>
-                <h4>aosera</h4>
+              <nav aria-labelledby="foot-products">
+                <h4 id="foot-products">{t.footer.products}</h4>
                 <ul>
-                  <li>
-                    <a href={`${MAIN_SITE_URL}/${lang}`} target="_blank" rel="noopener noreferrer">
-                      {t.footer.mainSite}
-                    </a>
-                  </li>
-                  <li>
-                    <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">
-                      Instagram @aoseratech
-                    </a>
-                  </li>
+                  {t.footer.productLinks.map((l) => (
+                    <li key={l.label}>
+                      <a href={`${MAIN_SITE_URL}/${lang}/${l.path}`}>{l.label}</a>
+                    </li>
+                  ))}
                 </ul>
-              </div>
+              </nav>
+              <nav aria-labelledby="foot-company">
+                <h4 id="foot-company">{t.footer.company}</h4>
+                <ul>
+                  {t.footer.companyLinks.map((l) => (
+                    <li key={l.label}>
+                      <a href={`${MAIN_SITE_URL}/${lang}/${l.path}`}>{l.label}</a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
               <div>
                 <h4>{t.footer.contact}</h4>
                 <ul>
@@ -227,11 +232,16 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
                   <li>
                     <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
                   </li>
+                  <li>
+                    <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">
+                      Instagram @aoseratech
+                    </a>
+                  </li>
                 </ul>
               </div>
             </div>
             <div className="footer-bottom">
-              <span>© 2026 aosera</span>
+              <span className="tabular-nums">© 2026 aosera</span>
               <span>{t.footer.madeIn}</span>
             </div>
           </div>
